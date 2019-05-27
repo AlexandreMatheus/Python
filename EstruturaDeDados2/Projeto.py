@@ -1,7 +1,5 @@
-# Capacity for internal array
-INITIAL_CAPACITY = 10
+CAPACIDADE_INICIAL = 10
 
-# Node data structure - essentially a LinkedList node
 class Node:
     def __init__(self, key, nome,idade):
         self.key = key
@@ -12,11 +10,11 @@ class Node:
         return "<Node: (%s, %s), next: %s>" % (self.key, self.nome, self.idade, self.next != None)
     def __repr__(self):
         return str(self)
-# Hash table with separate chaining
+
 class HashTable:
-    # Initialize hash table
+
     def __init__(self):
-        self.capacity = INITIAL_CAPACITY
+        self.capacity = CAPACIDADE_INICIAL
         self.size = 0
         self.buckets = [None]*self.capacity
 
@@ -72,7 +70,7 @@ class HashTable:
                 prev.next = prev.next.next
 
             return 'removido ->' + result
-        
+
     def show(self):
         for x in range(len(self.buckets)):
             node = self.buckets[x]
