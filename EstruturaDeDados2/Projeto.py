@@ -52,6 +52,18 @@ class HashTable:
             print('Idade -> ',node.idade)
             finish = input('aperte enter para continuar ...')
 
+    def duplicated(self, key):
+        index = self.hash(key)
+        node = self.buckets[index]
+        while node is not None and node.key != key:
+            node = node.next
+        if node is None:
+
+            return False
+        else:
+            return True
+
+    def remove(self, key):
         index = self.hash(key)
         node = self.buckets[index]
         prev = None
@@ -86,9 +98,6 @@ class HashTable:
             print(lista)
         finish = input('aperte enter para continuar ...')
 
-
-
-#\
 def Menu(HashTab):
     print('PROJETO ESTRUTURA 2 - HASHTABLE ENCADEADO\nMenu:')
     print('1- Inserir Aluno')
@@ -99,7 +108,10 @@ def Menu(HashTab):
     escolhaMenu = input('opcao -> ')
     if escolhaMenu == '1':
         key = input('Matricula -> ')
-        print()
+        if HashTab.duplicated(int(key)):
+            input('Aluno já cadastrado, aperte enter para voltar ...')
+            print()
+            Menu(HashTab)
         nome = input('nome -> ')
         idade = input('idade -> ')
         HashTab.insert(int(key),nome,idade)
@@ -108,7 +120,7 @@ def Menu(HashTab):
 
     if escolhaMenu == '2':
         matricula = input('Matricula -> ')
-        HashTab.find(matricula)
+        HashTab.find(int(matricula))
         print()
         Menu(HashTab)
 
