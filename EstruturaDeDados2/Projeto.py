@@ -44,7 +44,8 @@ class HashTable:
         while node is not None and node.key != key:
             node = node.next
         if node is None:
-
+            print('Aluno não cadastrado...')
+            finish = input('aperte enter para continuar ...')
             return None
         else:
             print('Matricula -> ',node.key)
@@ -126,7 +127,7 @@ def Menu(HashTab):
 
     if escolhaMenu == '3':
         matricula = input('Matricula -> ')
-        HashTab.remove(int(matricula))
+        print(HashTab.remove(int(matricula)))
         finish = input('aperte enter para continuar ...')
         print()
         Menu(HashTab)
